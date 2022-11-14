@@ -5,41 +5,53 @@ const fs = require("fs");
 const createREADME = (
   title,
   description,
-  contents,
   installation,
   usage,
   license,
-  contributing,
+  contributions,
   tests,
-  questions
+  questions,
+  username,
+  email
 ) => {
   const README = 
   `#${title}
+  ![badge](https://img.shields.io/badge/license-${license}-brightgreen)<br />
 
-## Description
-${description}
 
-## Contents
-${contents}
+    ## Description
+    ${description}
 
-## Installation
-${installation}
+    ## Contents
+    - [Description](#description)
+    - [Installation](#installation)
+    - [Usage](#usage)
+    - [License](#license)
+    - [Contributing](#contributing)
+    - [Tests](#tests)
+    - [Questions](#questions)
 
-## Usage
-${usage}
+    ## Installation
+    ${installation}
 
-## License
-${license}
-Please refer to license in repo.
+    ## Usage
+    ${usage}
 
-## Contributions
-${contributing}
+    ## License
+    ![badge](https://img.shields.io/badge/license-${license}-brightgreen)
+    <br/>
+    This application is covered by the ${license} license. 
 
-## Tests
-${tests}
+    ## Contributions
+    ${contributions}
 
-## Questions
-${questions}
+    ## Tests
+    ${tests}
+
+    ## Questions
+    ${questions}<br/>
+    Find me on GitHub: [${username}](https://github.com/${username})<br/>
+    Email me with any questions: ${email}<br /><br />
 `;
 
 return README;
@@ -164,6 +176,32 @@ inquirer.prompt([
         }
       },
     },
+    {
+        type: "input",
+        name: "email",
+        message: "what is your email?",
+        validate: (questionsInput) => {
+          if (questionsInput) {
+            return true;
+          } else {
+            console.log("Please add your email address!");
+            return false;
+          }
+        },
+      },
+      {
+        type: "input",
+        name: "username",
+        message: "what is your GitHub username?",
+        validate: (questionsInput) => {
+          if (questionsInput) {
+            return true;
+          } else {
+            console.log("Please enter your GitHub username!");
+            return false;
+          }
+        },
+      },
   ])
   .then((answers) => {
     const {
@@ -176,6 +214,8 @@ inquirer.prompt([
       contributing,
       tests,
       questions,
+      email,
+      username
     } = answers;
 
     console.log(answers);
@@ -190,7 +230,9 @@ inquirer.prompt([
         license,
         contributing,
         tests,
-        questions),
+        questions,
+        email,
+        username),
       (error) => {
         if (error) throw error;
       }
@@ -199,6 +241,7 @@ inquirer.prompt([
   .catch ((error) => {
     if (error.isTtyError) {
     } else {
+            `Something went wrong`
     }
   });
 
