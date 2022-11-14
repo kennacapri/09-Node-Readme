@@ -65,7 +65,7 @@ const questions = [
     {
         type: 'input',
         name: 'contents',
-        message: 'only useful if README file is long',
+        message: 'table of contents is only useful if README file is long',
         validate: (contentInput) => {
             if (contentInput) {
                 return true;
@@ -78,7 +78,7 @@ const questions = [
     {
         type: 'input',
         name: 'installation',
-        message: 'what is the title of your README?',
+        message: 'how to install your application?',
         validate: (titleInput) => {
             if (titleInput) {
                 return true;
@@ -91,7 +91,7 @@ const questions = [
     {
         type: 'input',
         name: 'usage',
-        message: 'what is the title of your README?',
+        message: 'How are you going to use your application?',
         validate: (usageInput) => {
             if (usageInput) {
                 return true;
