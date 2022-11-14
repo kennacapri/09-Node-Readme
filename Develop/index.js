@@ -1,6 +1,39 @@
 // TODO: Include packages needed for this application
+const inquirer = require('inquirer');
+const fs = require('fs');
 
-// TODO: Create an array of questions for user input
+const createREADME = (title, description, contents, installation, usage, license, contributing, tests, questions ) => {
+const README = 
+`#${title}
+
+##Description
+${description}
+
+##Contents
+${contents}
+
+##Installation
+${installation}
+
+##Usage
+${usage}
+
+##License
+${license}
+Please refer to license in repo.
+
+##Contributions
+${contributing}
+
+##Tests
+${tests}
+
+##Questions
+${questions}
+`;
+
+}
+
 const questions = [
 
     {
@@ -31,7 +64,7 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'table of contents',
+        name: 'contents',
         message: 'only useful if README file is long',
         validate: (contentInput) => {
             if (contentInput) {
@@ -120,12 +153,23 @@ const questions = [
     },
 
 ];
+module.exports = questions;
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    const fileData = 
+}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer.createPromptModule(questions)
+    .then((inquirerResponse, data) => {
+        console.log('Creating README file');
+        fs.writeFileSync('README.md', 'inquirerResponse', 'data');
+    })
+
+        
+}
 
 // Function call to initialize app
 init();
