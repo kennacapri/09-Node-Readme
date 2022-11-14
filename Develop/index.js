@@ -156,20 +156,18 @@ const questions = [
 module.exports = questions;
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-    const fileData = 
+function linkFile(fileName, data) {
+    const fileData = generateMarkdown(data);
+    fs.linkFile(fileName, fileData, (error) => {});
 }
 
 // TODO: Create a function to initialize app
 function init() {
-    inquirer.createPromptModule(questions)
-    .then((inquirerResponse, data) => {
-        console.log('Creating README file');
-        fs.writeFileSync('README.md', 'inquirerResponse', 'data');
-    })
+    inquirer.prompt(questions)
+    .then((answers) => linkFile('README.,md', answers));
+}
 
         
-}
 
 // Function call to initialize app
 init();
