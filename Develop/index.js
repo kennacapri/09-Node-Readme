@@ -16,29 +16,29 @@ const createREADME = (
   const README = 
   `#${title}
 
-##Description
+## Description
 ${description}
 
-##Contents
+## Contents
 ${contents}
 
-##Installation
+## Installation
 ${installation}
 
-##Usage
+## Usage
 ${usage}
 
-##License
+## License
 ${license}
 Please refer to license in repo.
 
-##Contributions
+## Contributions
 ${contributing}
 
-##Tests
+## Tests
 ${tests}
 
-##Questions
+## Questions
 ${questions}
 `;
 
