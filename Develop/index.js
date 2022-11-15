@@ -25,7 +25,7 @@ const createREADME = (
   - [Installation](#installation)
   - [Usage](#usage)
   - [License](#license)
-  - [Contributing](#contributing)
+  - [Contributions](#contributions)
   - [Tests](#tests)
   - [Questions](#questions)
    
@@ -85,21 +85,6 @@ inquirer
     },
     {
       type: "input",
-      name: "contents",
-      message: "table of contents is only useful if README file is long",
-      validate: (contentInput) => {
-        if (contentInput) {
-          return true;
-        } else {
-          console.log(
-            "Please add table of contents if your README file is long!"
-          );
-          return false;
-        }
-      },
-    },
-    {
-      type: "input",
       name: "installation",
       message: "how to install your application?",
       validate: (titleInput) => {
@@ -138,7 +123,7 @@ inquirer
     },
     {
       type: "input",
-      name: "contributing",
+      name: "contributions",
       message: "who are the contributors of your project?",
       validate: (contInput) => {
         if (contInput) {
@@ -206,11 +191,10 @@ inquirer
     const {
       title,
       description,
-      contents,
       installation,
       usage,
       license,
-      contributing,
+      contributions,
       tests,
       questions,
       username,
@@ -223,11 +207,10 @@ inquirer
       createREADME(
         title,
         description,
-        contents,
         installation,
         usage,
         license,
-        contributing,
+        contributions,
         tests,
         questions,
         username,
