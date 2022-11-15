@@ -1,4 +1,3 @@
-// TODO: Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
 
@@ -14,50 +13,50 @@ const createREADME = (
   username,
   email
 ) => {
-  const README = 
-  `#${title}
+  const README =`
+  # ${title}
   ![badge](https://img.shields.io/badge/license-${license}-brightgreen)<br />
 
+  ## Description
+  ${description}
+  
+  ## Contents
+  - [Description](#description)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [License](#license)
+  - [Contributing](#contributing)
+  - [Tests](#tests)
+  - [Questions](#questions)
+   
+  ## Installation
+  ${installation}
+  
+  ## Usage
+  ${usage}
 
-    ## Description
-    ${description}
+  ## License
+  ![badge](https://img.shields.io/badge/license-${license}-brightgreen)
+  <br/>
+  This application is covered by the ${license} license. 
+  
+  ## Contributions
+  ${contributions}
+  
+  ## Tests
+  ${tests}
 
-    ## Contents
-    - [Description](#description)
-    - [Installation](#installation)
-    - [Usage](#usage)
-    - [License](#license)
-    - [Contributing](#contributing)
-    - [Tests](#tests)
-    - [Questions](#questions)
+  ## Questions
+  ${questions}<br/>
+  Find me on GitHub: [${username}](https://github.com/${username})<br/>
+  Email me with any questions: ${email}<br /><br />
+  `;
 
-    ## Installation
-    ${installation}
-
-    ## Usage
-    ${usage}
-
-    ## License
-    ![badge](https://img.shields.io/badge/license-${license}-brightgreen)
-    <br/>
-    This application is covered by the ${license} license. 
-
-    ## Contributions
-    ${contributions}
-
-    ## Tests
-    ${tests}
-
-    ## Questions
-    ${questions}<br/>
-    Find me on GitHub: [${username}](https://github.com/${username})<br/>
-    Email me with any questions: ${email}<br /><br />
-`;
-
-return README;
+  return README;
 };
 
-inquirer.prompt([
+inquirer
+  .prompt([
     {
       type: "input",
       name: "title",
@@ -132,9 +131,9 @@ inquirer.prompt([
       name: "license",
       message: "please select a license",
       choices: [
-        "MIT License",
-        "Apache License 2.0",
-        'BSD 2-Clause "Simplified" License',
+        "MIT",
+        "Apache_2.0",
+        'BSD_2--Clause',
       ],
     },
     {
@@ -178,19 +177,6 @@ inquirer.prompt([
     },
     {
         type: "input",
-        name: "email",
-        message: "what is your email?",
-        validate: (questionsInput) => {
-          if (questionsInput) {
-            return true;
-          } else {
-            console.log("Please add your email address!");
-            return false;
-          }
-        },
-      },
-      {
-        type: "input",
         name: "username",
         message: "what is your GitHub username?",
         validate: (questionsInput) => {
@@ -202,6 +188,19 @@ inquirer.prompt([
           }
         },
       },
+    {
+      type: "input",
+      name: "email",
+      message: "what is your email?",
+      validate: (questionsInput) => {
+        if (questionsInput) {
+          return true;
+        } else {
+          console.log("Please add your email address!");
+          return false;
+        }
+      },
+    },
   ])
   .then((answers) => {
     const {
@@ -214,8 +213,8 @@ inquirer.prompt([
       contributing,
       tests,
       questions,
+      username,
       email,
-      username
     } = answers;
 
     console.log(answers);
@@ -231,19 +230,17 @@ inquirer.prompt([
         contributing,
         tests,
         questions,
-        email,
-        username),
+        username,
+        email
+      ),
       (error) => {
         if (error) throw error;
       }
     );
   })
-  .catch ((error) => {
+  .catch((error) => {
     if (error.isTtyError) {
     } else {
-            `Something went wrong`
+      `Something went wrong`;
     }
   });
-
-
-
