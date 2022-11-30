@@ -142,7 +142,7 @@ inquirer
         if (testInput) {
           return true;
         } else {
-          console.log("Please add test instructions inf applicable!");
+          console.log("Please add test instructions if applicable!");
           return false;
         }
       },
