@@ -1,6 +1,8 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 
+
+//table of contents for README
 const createREADME = (
   title,
   description,
@@ -55,6 +57,7 @@ const createREADME = (
   return README;
 };
 
+// questions that user will answer
 inquirer
   .prompt([
     {
@@ -216,6 +219,8 @@ inquirer
         username,
         email
       ),
+
+      // if there is an error, message saying "something went wrong" will display
       (error) => {
         if (error) throw error;
       }
